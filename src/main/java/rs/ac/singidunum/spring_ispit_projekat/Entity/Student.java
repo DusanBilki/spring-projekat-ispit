@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Entity(name = "student")
 @NoArgsConstructor
@@ -26,6 +27,10 @@ public class Student {
 
     @Column(nullable = false, unique = true)
     private String indeks;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "study_programme_id", nullable = false)
+    private StudyProgramme studyProgramme;
 
     @Column(nullable = false)
     private LocalDateTime createdAt= LocalDateTime.now();
